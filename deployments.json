@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "date": "2022-09-01T17:10:82.468Z",
+    "commit": "Hello world"
+  },
+  {
+    "id": 2,
+    "date": "2022-09-02T14:09:05.005Z",
+    "commit": "Yay, this is fun!"
+  },
+  {
+    "id": 3,
+    "date": "2022-09-03T11:14:65.603Z",
+    "commit": "Not sure this is fun anymore"
+  },
+  {
+    "id": 4,
+    "date": "2022-09-05T04:25:45.905Z",
+    "commit": "Nope, fun has left the house"
+  }
+]

@@ -9,12 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@blitzjs/auth": "2.0.0-beta.3",
+    "@blitzjs/next": "2.0.0-beta.3",
+    "@blitzjs/rpc": "2.0.0-beta.3",
+    "@prisma/client": "4.3.1",
+    "babel-plugin-superjson-next": "0.4.4",
+    "blitz": "2.0.0-beta.3",
+    "final-form": "4.20.7",
     "next": "12.3.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-final-form": "6.5.9",
+    "superjson": "1.9.1",
+    "zod": "3.19.1"
   },
   "devDependencies": {
+    "@types/react": "18.0.19",
     "eslint": "8.23.1",
-    "eslint-config-next": "12.3.0"
+    "eslint-config-next": "12.3.0",
+    "prisma": "4.3.1",
+    "typescript": "4.8.3"
   }
 }
