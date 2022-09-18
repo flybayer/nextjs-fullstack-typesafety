@@ -1,6 +1,20 @@
 import styles from "../../styles/Home.module.css";
+import { GetServerSideProps } from "next";
+interface Deployment {
+  id: string;
+  date: string;
+  commit: string;
+}
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const deployments: Deployment[] = require("../../deployments.json");
+  return { props: { deployments } };
+};
 
-export default function Deployments() {
+export default function Deployments({
+  deployments,
+}: {
+  deployments: Deployment[];
+}) {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -8,7 +22,13 @@ export default function Deployments() {
           Deploy with <a href="https://flightcontrol.dev">Flightcontrol!</a>
         </h1>
 
-        <div className={styles.description}>TODO</div>
+        <div className={styles.description}>
+          {deployments.map((deployment) => (
+            <p id={deployment.id} key={deployment.id}>
+              Deployment id {deployment.id} - {deployment.commit}
+            </p>
+          ))}
+        </div>
       </main>
     </div>
   );

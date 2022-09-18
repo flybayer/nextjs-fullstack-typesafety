@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps<{
 
 type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
-export default function Deployments({ deployments }: PageProps) {
+export default function DeploymentsBackup({ deployments }: PageProps) {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -33,7 +33,7 @@ export default function Deployments({ deployments }: PageProps) {
 
         <div className={styles.description}>
           {deployments.map((deployment) => (
-            <p id={deployment.id}>
+            <p id={deployment.id} key={deployment.id}>
               Deployment id {deployment.id} - {deployment.commit}
             </p>
           ))}
