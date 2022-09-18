@@ -1,20 +1,20 @@
 import styles from "../../styles/Home.module.css";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 interface Deployment {
   id: string;
   date: string;
   commit: string;
 }
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps<{
+  deployments: Deployment[];
+}> = async (ctx) => {
   const deployments: Deployment[] = require("../../deployments.json");
   return { props: { deployments } };
 };
 
-export default function Deployments({
-  deployments,
-}: {
-  deployments: Deployment[];
-}) {
+type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
+
+export default function Deployments({ deployments }: PageProps) {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
