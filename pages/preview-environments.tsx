@@ -1,6 +1,6 @@
 import styles from "../styles/Home.module.css";
 
-export default function PreviewEnvironments({ deployments }: PageProps) {
+export default function PreviewEnvironments() {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -10,8 +10,6 @@ export default function PreviewEnvironments({ deployments }: PageProps) {
             Flightcontrol Preview Environments!
           </a>
         </h1>
-
-        <div className={styles.description}>TODO</div>
       </main>
     </div>
   );

@@ -1,14 +1,15 @@
 import styles from "../../styles/Home.module.css";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-interface Deployment {
-  id: string;
-  date: string;
-  commit: string;
-}
+import { PrismaClient, Deployment } from "@prisma/client";
+import Link from "next/link";
+const prisma = new PrismaClient();
+
 export const getServerSideProps: GetServerSideProps<{
-  deployments: Deployment[];
+  deployments: Omit<Deployment, "date">[];
 }> = async (ctx) => {
-  const deployments: Deployment[] = require("../../deployments.json");
+  const deployments = await prisma.deployment.findMany({
+    select: { id: true, commit: true },
+  });
   return { props: { deployments } };
 };
 
@@ -22,9 +23,18 @@ export default function Deployments({ deployments }: PageProps) {
           Deploy with <a href="https://flightcontrol.dev">Flightcontrol!</a>
         </h1>
 
+        <h2
+          className={styles.title}
+          style={{ fontSize: "2rem", marginTop: "2rem" }}
+        >
+          <Link href="/flightcontrol/preview-environments">
+            <a>Preview Environments</a>
+          </Link>
+        </h2>
+
         <div className={styles.description}>
           {deployments.map((deployment) => (
-            <p id={deployment.id} key={deployment.id}>
+            <p id={String(deployment.id)} key={deployment.id}>
               Deployment id {deployment.id} - {deployment.commit}
             </p>
           ))}
