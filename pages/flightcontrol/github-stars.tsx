@@ -13,6 +13,8 @@ export default function Page() {
             headers: { "content-type": "application/json" },
             body: JSON.stringify(input),
           }).then((res) => res.json())) as SaveStarsResult;
+
+          console.log(result!.success);
         } catch (err) {
           alert(err);
         }

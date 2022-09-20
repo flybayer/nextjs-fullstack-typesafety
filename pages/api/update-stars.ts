@@ -5,7 +5,7 @@ export interface SaveStarsInput {
 }
 async function saveStars(input: SaveStarsInput) {
   const { numberOfStars } = input;
-  if (!numberOfStars) return;
+  // Save in DB
   return { success: true, newStars: numberOfStars };
 }
 export type SaveStarsResult = Awaited<ReturnType<typeof saveStars>>;
