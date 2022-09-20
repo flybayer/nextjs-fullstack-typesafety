@@ -15,13 +15,11 @@ export default function BrokenBuild() {
             schema={SaveDurationInput}
             onSubmit={async ({ duration }) => {
               try {
-                const input = { duration };
-                const result = (await fetch("/api/broken-build-pulse", {
+                await fetch("/api/update-stars", {
                   method: "POST",
                   headers: { "content-type": "application/json" },
-                  body: JSON.stringify(input),
-                }).then((res) => res.json())) as SaveDurationResult;
-                console.log(result!.success);
+                  body: JSON.stringify({ data: { numberOfStars } }),
+                });
               } catch (err) {
                 alert(err);
               }

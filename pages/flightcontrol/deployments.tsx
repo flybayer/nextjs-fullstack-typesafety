@@ -2,6 +2,7 @@ import styles from "../../styles/Home.module.css";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { PrismaClient, Deployment } from "@prisma/client";
 import Link from "next/link";
+import { Routes } from "@blitzjs/next";
 const prisma = new PrismaClient();
 
 export const getServerSideProps: GetServerSideProps<{
@@ -27,7 +28,7 @@ export default function Deployments({ deployments }: PageProps) {
           className={styles.title}
           style={{ fontSize: "2rem", marginTop: "2rem" }}
         >
-          <Link href="/flightcontrol/preview-environments">
+          <Link href={Routes.PreviewEnvironments()}>
             <a>Preview Environments</a>
           </Link>
         </h2>
