@@ -1,6 +1,3 @@
 import { z } from "zod";
-
-export const SaveDurationInput = z.object({
-  duration: z.string().min(1),
-});
-export type SaveDurationInput = z.infer<typeof SaveDurationInput>;
+export const SaveStarsInput = z.object({ numberOfStars: z.number().min(0) });
+export type SaveStarsInputType = z.infer<typeof SaveStarsInput>;

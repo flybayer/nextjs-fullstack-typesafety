@@ -1,13 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { SaveStarsInput, SaveStarsInputType } from "../../validations";
 
-export interface SaveStarsInput {
-  numberOfStars: number;
-}
-async function saveStars(input: SaveStarsInput) {
-  const { numberOfStars } = input;
+async function saveStars(input: SaveStarsInputType) {
+  const { numberOfStars } = SaveStarsInput.parse(input);
+
   // Save in DB
   return { success: true, newStars: numberOfStars };
 }
+
 export type SaveStarsResult = Awaited<ReturnType<typeof saveStars>>;
 
 export default async function updateStars(

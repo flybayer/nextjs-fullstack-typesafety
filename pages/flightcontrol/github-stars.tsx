@@ -1,13 +1,14 @@
 import Form from "../../components/Form";
 import LabeledTextField from "../../components/LabeledTextField";
-import { SaveStarsInput, SaveStarsResult } from "../api/update-stars";
+import { SaveStarsInputType } from "../../validations";
 
 export default function Page() {
   return (
     <Form
+      schema={SaveStarsInput}
       onSubmit={async ({ numberOfStars }) => {
         try {
-          const input: SaveStarsInput = { numberOfStars };
+          const input: SaveStarsInputType = { numberOfStars };
           const result = (await fetch("/api/update-stars", {
             method: "POST",
             headers: { "content-type": "application/json" },
